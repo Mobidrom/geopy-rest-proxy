@@ -1,0 +1,17 @@
+== GeoPy-REST-Proxy
+This repository contains a simple REST proxy based on the awesome https://github.com/geopy/geopy[GeoPy]-Project. The goal is to have a REST-interface which provides the main API-Endpoints that https://github.com/komoot/photon[Photon] (https://photon.komoot.io/[API-Documentation at Komoot]) and https://github.com/pelias/api[Pelias] (https://github.com/pelias/documentation/blob/master/search.md[API-Doumentation Forward], https://github.com/pelias/documentation/blob/master/reverse.md[API-Documentation Reverse]) have to offer and can act as simple replacement for these two services.
+
+Responses of the GeoPy-REST-Proxy are valid GeoJSON though different and somewhat simpler than e.g. the responses of Photon and Pelias. The raw results of the upstream geocoder can be included as well.
+
+== Usage scenarios
+
+=== Meta-geocoder
+For the _Mobidrom Routing Services_ we wanted to achieve some flexibility regarding which geocoding service is used for geocoding requests. This should allow us to replace the currently used Photon e.g. with Pelias or Nominatim as upstream geocoder anytime in the future or add a specialized geocoder for public transport stops.
+
+=== Authorization
+The proxy already does allow authorization of the API using an API-Token (set from an environment variable) in order to avoid unrestricted usage. In the future "proper" user authenication will be added especially to also support the following usage scenario
+
+=== Monitoring / Statistics
+While the _Mobidrom Routing Services_ are made available in a non-discriminatory way it is relevant to see who is using which service and how often as well as to separate internal (_Mobidrom Routing Services_ itself, Verkehr.NRW) and external users. Thus if the environment variable ``ENABLE_METRICS`` is set to ``true`` the proxy exposes a ``/metrics`` endpoint for Prometheus where relevant information can be scraped by Prometheus
+
+

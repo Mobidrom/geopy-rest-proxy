@@ -1,0 +1,39 @@
+[tool.ruff]
+# hard limit, error here
+line-length = 120
+
+[tool.black]
+# soft limit, wrap just before 100 chars
+line-length = 98
+
+[tool.poetry]
+name = "geopy-rest-proxy"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.11"
+authlib = "^1.3.0"
+fastapi = "^0.110.0"
+httpx = "^0.27.0"
+itsdangerous = "^2.1.2"
+uvicorn = "^0.27.1"
+geopy = "^2.4.1"
+geojson = "^3.1.0"
+pydantic = "^2.6.3"
+pydantic-settings = "^2.2.1"
+prometheus-fastapi-instrumentator = "^6.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.8.0"
+ruff = "^0.3.0"
+black = "^24.2.0"
+pytest = "^8.0.2"
+ptyme-track = "^0.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
